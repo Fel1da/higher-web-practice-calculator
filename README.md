@@ -1,3 +1,7 @@
+# Проект "Калькулятор расходов"
+
+https://github.com/Fel1da/higher-web-practice-calculator
+
 # Установка зависимостей
 
 npm install
