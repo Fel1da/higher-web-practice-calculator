@@ -1,0 +1,10 @@
+@import 'tailwindcss';
+
+@layer base {
+  body {
+    @apply min-w-80 bg-white font-sans text-slate-900 antialiased md:bg-slate-50;
+  }
+  button:disabled {
+    @apply cursor-not-allowed opacity-50;
+  }
+}
