@@ -15,14 +15,14 @@ function periodLabel(date: string, minimum: string): string {
 
 export function dateInput(id: string, label: string, initial = '', minimum = todayIso()): string {
   return `<div class="relative" data-calendar="${id}" data-minimum="${minimum}">
-    <label class="mb-1 block pl-3 text-xs text-slate-500" for="${id}">${label}</label>
+    <label class="mb-1 block pl-3 text-xs text-gray-500" for="${id}">${label}</label>
     <button id="${id}" type="button" aria-haspopup="dialog" aria-expanded="false" aria-describedby="${id}-error"
-      class="flex w-full items-center justify-between rounded-md border border-slate-200 bg-white px-3 py-3 text-left text-base text-slate-900 outline-none transition focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
-      <span data-date-value>${periodLabel(initial, minimum)}</span><span aria-hidden="true" class="text-xl leading-none text-slate-500">⌄</span>
+      class="flex w-full items-center justify-between h-12 rounded-lg border border-gray-200 bg-white px-3 text-left text-base text-gray-900 outline-none transition focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
+      <span data-date-value>${periodLabel(initial, minimum)}</span><span aria-hidden="true" class="mr-1 size-3 rotate-45 border-r border-b border-gray-500"></span>
     </button>
     <input type="hidden" name="${id}" value="${initial}" />
-    <div data-calendar-panel class="absolute z-20 mt-2 hidden w-full min-w-64 rounded-lg border border-slate-200 bg-white p-3 shadow-xl" role="dialog" aria-label="Выбор даты"></div>
-    <p id="${id}-error" role="alert" class="mt-1 min-h-4 text-xs text-rose-600"></p>
+    <div data-calendar-panel class="absolute z-20 mt-2 hidden w-full min-w-64 rounded-lg border border-gray-200 bg-white p-3 shadow-xl" role="dialog" aria-label="Выбор даты"></div>
+    <p id="${id}-error" role="alert" class="empty:hidden mt-1 text-xs text-rose-600"></p>
   </div>`;
 }
 
@@ -67,7 +67,7 @@ export function attachCalendar(id: string): void {
     weekdays.forEach(day => {
       const label = document.createElement('span');
       label.textContent = day;
-      label.className = 'py-2 text-xs text-slate-500';
+      label.className = 'py-2 text-xs text-gray-500';
       grid.append(label);
     });
     const offset = (getDay(displayed) + 6) % 7;
@@ -85,7 +85,7 @@ export function attachCalendar(id: string): void {
       cell.disabled = value < minimum;
       cell.setAttribute('aria-label', format(parseISO(value), 'd MMMM yyyy', { locale: ru }));
       cell.className =
-        'rounded py-2 hover:bg-blue-50 focus-visible:outline-2 focus-visible:outline-blue-500 disabled:text-slate-300 disabled:hover:bg-transparent' +
+        'rounded py-2 hover:bg-blue-50 focus-visible:outline-2 focus-visible:outline-blue-500 disabled:text-gray-300 disabled:hover:bg-transparent' +
         (value === input.value ? ' bg-blue-500 text-white hover:bg-blue-600' : '');
       cell.onclick = () => {
         input.value = value;

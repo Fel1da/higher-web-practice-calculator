@@ -19,7 +19,7 @@ export async function initApp(): Promise<void> {
   if (!root) {
     throw new Error('Не найден корневой элемент приложения');
   }
-  root.innerHTML = '<p class="mx-auto max-w-4xl p-8 text-slate-600">Загрузка…</p>';
+  root.innerHTML = '<p class="mx-auto max-w-4xl p-8 text-gray-600">Загрузка…</p>';
   try {
     const [budget, transactions] = await Promise.all([loadBudget(), loadTransactions()]);
     const page =

@@ -14,20 +14,20 @@ export function mainPage(
   const metrics = calculateMetrics(budget, transactions);
   const section = document.createElement('main');
   section.className =
-    'mx-auto flex min-h-dvh w-full max-w-[524px] flex-col gap-2 bg-white px-4 py-7 md:mt-20 xl:mt-[4.4vw] md:min-h-0 md:bg-transparent md:px-0 md:py-0 xl:w-[39%] xl:max-w-[840px] xl:pb-[10vw]';
-  section.innerHTML = `<section class="md:rounded-2xl md:bg-white md:p-7 md:shadow-lg">
-      <div class="flex items-start justify-between gap-2 text-slate-500"><span class="text-base md:text-xl">Общий баланс</span><span class="whitespace-nowrap text-sm text-blue-500 md:text-xl">${money(metrics.dailyBudget)} в день</span></div>
-      <p class="mt-1 flex flex-wrap items-baseline gap-x-2"><strong class="text-2xl font-bold leading-none md:text-4xl">${money(metrics.balance)}</strong><span class="text-sm text-slate-500 md:text-xl">на ${metrics.daysRemaining} дней</span></p>
-      <div class="mt-5 grid grid-cols-2 gap-4 md:block"><button id="edit-balance" type="button" class="w-full rounded border border-blue-500 px-2 py-2.5 text-base text-blue-500 hover:bg-blue-50 focus-visible:outline-2 focus-visible:outline-blue-500">Изменить</button><button id="mobile-history" type="button" class="rounded border border-blue-500 px-1 py-2.5 text-base text-blue-500 hover:bg-blue-50 focus-visible:outline-2 focus-visible:outline-blue-500 md:hidden">История расходов</button></div>
+    'mx-auto flex min-h-dvh w-full max-w-[524px] flex-col gap-6 bg-white px-4 py-6 md:justify-center md:gap-2 md:bg-transparent md:px-0 md:py-0 xl:mt-16 xl:min-h-0 xl:max-w-[558px] xl:justify-start xl:pb-16';
+  section.innerHTML = `<section class="md:rounded-2xl md:border md:border-gray-200 md:bg-white md:p-6 md:shadow-[0_2px_8px_rgba(0,0,0,0.1)]">
+      <div class="flex items-center justify-between gap-2 text-gray-500"><span class="text-base xl:text-lg xl:font-semibold xl:leading-[1.3]">Общий баланс</span><span class="whitespace-nowrap text-base text-blue-500">${money(metrics.dailyBudget)} в день</span></div>
+      <p class="mt-0.5 flex flex-wrap items-baseline gap-x-2"><strong class="text-2xl font-semibold leading-[1.2] md:text-[32px] md:font-bold">${money(metrics.balance)}</strong><span class="text-sm text-gray-500 md:text-base">на ${metrics.daysRemaining} дней</span></p>
+      <div class="mt-6 grid grid-cols-2 gap-4 md:block"><button id="edit-balance" type="button" class="h-12 w-full rounded border border-blue-500 px-2 text-base font-medium text-blue-500 hover:bg-blue-50 focus-visible:outline-2 focus-visible:outline-blue-500">Изменить</button><button id="mobile-history" type="button" class="h-12 rounded border border-blue-500 px-1 text-base text-blue-500 hover:bg-blue-50 focus-visible:outline-2 focus-visible:outline-blue-500 md:hidden">История расходов</button></div>
     </section>
-    <section class="mt-1 md:rounded-2xl md:bg-white md:p-7 md:shadow-lg"><h2 class="text-base text-slate-500 md:text-2xl">На сегодня доступно</h2>
-      <p class="mt-1 text-[32px] font-bold leading-tight"><span class="${metrics.todayRemaining >= 0 ? 'text-emerald-500' : 'text-rose-600'}">${money(metrics.todayRemaining)}</span><span class="text-slate-500"> / ${money(metrics.dailyBudget)}</span></p>
-      <p class="mt-2 text-xs md:text-xs">${metrics.todayRemaining >= 0 ? '🎉 Отлично справились — сегодня вы в пределах лимита!' : 'Сегодня дневной лимит превышен'}</p>
-      <form id="transaction-form" class="mt-2" novalidate><div>${numericInput('amount', 'Введите трату', '0 ₽')}</div>
-      <button class="mt-1 w-full rounded bg-blue-500 px-5 py-2.5 text-base font-medium text-white hover:bg-blue-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500" type="submit">Сохранить</button>
-      <p id="transaction-submit-error" role="alert" class="mt-2 text-sm text-rose-600"></p></form></section>
-    <section class="mt-1 hidden md:block md:rounded-2xl md:bg-white md:p-7 md:shadow-lg"><h2 class="text-2xl font-bold">История расходов</h2><p class="mt-1 text-sm text-blue-500">Средние траты в день: ${money(metrics.averageExpense)}</p>
-      <div class="mt-4">${transactionList(transactions.slice(0, 3))}</div><button id="show-history" type="button" class="mt-6 w-full rounded border border-blue-500 px-4 py-2.5 text-blue-500 hover:bg-blue-50 focus-visible:outline-2 focus-visible:outline-blue-500">Смотреть всю историю</button></section>`;
+    <section class="md:rounded-2xl md:border md:border-gray-200 md:bg-white md:p-6 md:shadow-[0_2px_8px_rgba(0,0,0,0.1)]"><h2 class="text-base text-gray-500 xl:text-lg xl:font-semibold xl:leading-[1.3]">На сегодня доступно</h2>
+      <p class="mt-0.5 text-[32px] font-bold leading-[1.2]"><span class="${metrics.todayRemaining >= 0 ? 'text-emerald-500' : 'text-rose-600'}">${money(metrics.todayRemaining)}</span><span class="text-gray-500"> / ${money(metrics.dailyBudget).replace(/ ₽$/, '')}</span></p>
+      <p class="mt-3 text-xs leading-[1.4]">${metrics.todayRemaining >= 0 ? '🎉 Отлично справились — сегодня вы в пределах лимита!' : 'Сегодня дневной лимит превышен'}</p>
+      <form id="transaction-form" class="mt-3" novalidate><div>${numericInput('amount', 'Введите трату', '0 ₽')}</div>
+      <button class="mt-3 h-12 w-full rounded bg-blue-500 px-5 text-base font-medium text-white hover:bg-blue-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500" type="submit">Сохранить</button>
+      <p id="transaction-submit-error" role="alert" class="empty:hidden mt-2 text-sm text-rose-600"></p></form></section>
+    <section class="hidden md:block md:rounded-2xl md:border md:border-gray-200 md:bg-white md:p-6 md:shadow-[0_2px_8px_rgba(0,0,0,0.1)]"><h2 class="text-2xl font-semibold leading-[1.2] text-gray-500">История расходов</h2><p class="mt-1 text-xs leading-[1.4] text-blue-500">Средние траты в день: ${money(metrics.averageExpense)}</p>
+      <div class="mt-4">${transactionList(transactions.slice(0, 3))}</div><button id="show-history" type="button" class="mt-6 h-12 w-full rounded border border-blue-500 px-4 text-base font-medium text-blue-500 hover:bg-blue-50 focus-visible:outline-2 focus-visible:outline-blue-500">Смотреть всю историю</button></section>`;
   section.querySelector<HTMLButtonElement>('#edit-balance')!.onclick = onBalance;
   section.querySelector<HTMLButtonElement>('#mobile-history')!.onclick = onHistory;
   section.querySelector<HTMLButtonElement>('#show-history')!.onclick = onHistory;

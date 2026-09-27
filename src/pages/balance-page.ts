@@ -13,7 +13,7 @@ export function balancePage(
   const metrics = calculateMetrics(budget, transactions);
   const section = document.createElement('main');
   section.className =
-    'mx-auto flex min-h-dvh w-full max-w-[524px] flex-col bg-white px-4 pt-7 pb-8 md:mt-20 xl:mt-[4.4vw] md:min-h-0 md:rounded-2xl md:p-7 md:shadow-lg xl:w-[39%] xl:max-w-[840px]';
+    'mx-auto flex min-h-dvh w-full max-w-[524px] flex-col bg-white px-4 pt-7 pb-8 md:mt-16 md:min-h-0 md:rounded-2xl md:border md:border-gray-200 md:p-6 md:shadow-[0_2px_8px_rgba(0,0,0,0.1)] xl:max-w-[558px]';
   section.innerHTML = `<div class="flex items-center justify-between gap-2"><h1 class="text-2xl font-bold md:text-[32px]">Общий баланс</h1><span class="whitespace-nowrap text-sm text-blue-500 md:text-xl">${money(metrics.dailyBudget)} в день</span></div>
     <form id="balance-form" novalidate class="mt-4 flex flex-1 flex-col md:block">
       <div>${numericInput('currentBalance', 'Ваш баланс', money(metrics.balance))}</div>

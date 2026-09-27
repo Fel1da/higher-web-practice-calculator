@@ -1,9 +1,9 @@
 export function numericInput(id: string, label: string, placeholder: string): string {
-  return `<label for="${id}" class="mb-1 block pl-3 text-xs text-slate-500">${label}</label>
+  return `<label for="${id}" class="mb-1 block pl-3 text-xs leading-[1.4] text-gray-500">${label}</label>
     <input id="${id}" name="${id}" inputmode="numeric" type="text" autocomplete="off"
       placeholder="${placeholder}" aria-describedby="${id}-error"
-      class="w-full rounded-md border border-slate-200 bg-white px-3 py-3 text-base text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500" />
-    <p id="${id}-error" role="alert" class="mt-1 min-h-4 text-xs text-rose-600"></p>`;
+      class="h-12 w-full rounded-lg border border-gray-200 bg-white px-3 text-base text-gray-900 outline-none transition placeholder:text-gray-500 focus:border-2 focus:border-blue-500" />
+    <p id="${id}-error" role="alert" class="empty:hidden mt-1 text-xs text-rose-600"></p>`;
 }
 
 export function parseAmount(value: string): number {

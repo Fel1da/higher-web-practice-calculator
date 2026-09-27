@@ -6,14 +6,15 @@ import { todayIso } from '../utils/date';
 export function startPage(onSave: (budget: Budget) => Promise<void>): HTMLElement {
   const section = document.createElement('main');
   section.className =
-    'mx-auto flex min-h-dvh w-full max-w-[524px] flex-col bg-white px-4 pt-8 pb-8 md:mt-20 xl:mt-[4.4vw] md:min-h-0 md:rounded-2xl md:p-7 md:shadow-lg xl:w-[39%] xl:max-w-[840px]';
-  section.innerHTML = `<h1 class="mb-4 text-[32px] font-bold leading-tight tracking-tight md:text-4xl">Начнём!</h1>
-    <form id="budget-form" novalidate class="flex min-h-[calc(100dvh-118px)] flex-1 flex-col md:min-h-0">
+    'mx-auto flex min-h-dvh w-full max-w-[524px] flex-col bg-white px-4 py-8 md:justify-center md:bg-transparent md:px-0 md:py-0 md:pb-16 xl:max-w-[558px]';
+  section.innerHTML = `<div class="flex flex-1 flex-col md:flex-none md:rounded-2xl md:border md:border-gray-200 md:bg-white md:p-6 md:shadow-[0_2px_8px_rgba(0,0,0,0.1)]">
+    <h1 class="mb-3 text-[32px] font-bold leading-[1.2]">Начнём!</h1>
+    <form id="budget-form" novalidate class="flex flex-1 flex-col md:flex-none">
       <div>${numericInput('initialBalance', 'Укажите баланс', '10 000 ₽')}</div>
-      <div class="mt-1">${dateInput('endDate', 'На срок')}</div>
-      <div class="mt-auto pt-8 md:mt-5"><button class="w-full rounded bg-blue-500 px-5 py-2.5 text-base font-medium text-white hover:bg-blue-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500" type="submit">Рассчитать</button>
-      <p id="budget-submit-error" role="alert" class="mt-2 text-sm text-rose-600"></p></div>
-    </form>`;
+      <div class="mt-3">${dateInput('endDate', 'На срок')}</div>
+      <div class="mt-auto pt-8 md:mt-6 md:pt-0"><button class="h-12 w-full rounded bg-blue-500 px-5 text-base font-medium text-white hover:bg-blue-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500" type="submit">Рассчитать</button>
+      <p id="budget-submit-error" role="alert" class="empty:hidden mt-2 text-sm text-rose-600"></p></div>
+    </form></div>`;
   section.querySelector<HTMLInputElement>('#initialBalance')!.value = '10000';
   section.querySelector<HTMLFormElement>('form')!.addEventListener('submit', async event => {
     event.preventDefault();
