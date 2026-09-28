@@ -1,7 +1,7 @@
 import { addMonths, format, getDay, getDaysInMonth, parseISO, startOfMonth } from 'date-fns';
 import { ru } from 'date-fns/locale';
 
-import { calendarDays, todayIso } from '../utils/date';
+import { calendarDays, todayIso } from '../utils/variables';
 
 const weekdays = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'];
 

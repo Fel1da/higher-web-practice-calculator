@@ -1,5 +1,5 @@
 import { money } from '../services/budget-calculator';
-import { dateLabel } from '../utils/date';
+import { dateLabel } from '../utils/variables';
 
 import type { Transaction } from '../models/schemas';
 
