@@ -1,4 +1,4 @@
-import { calendarDays, todayIso } from '../utils/date';
+import { calendarDays, todayIso } from '../utils/variables';
 
 import type { Budget, Transaction } from '../models/schemas';
 
