@@ -2,7 +2,7 @@ import { numericInput, parseAmount, showError } from '../components/input';
 import { transactionList } from '../components/transaction-list';
 import { transactionSchema, type Budget, type Transaction } from '../models/schemas';
 import { calculateMetrics, money } from '../services/budget-calculator';
-import { todayIso } from '../utils/variables';
+import { todayIso } from '../utils/validation';
 
 export function mainPage(
   budget: Budget,

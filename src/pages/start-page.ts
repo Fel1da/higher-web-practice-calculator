@@ -1,7 +1,7 @@
 import { attachCalendar, dateInput } from '../components/date-input';
 import { numericInput, parseAmount, showError } from '../components/input';
 import { budgetSchema, type Budget } from '../models/schemas';
-import { todayIso } from '../utils/variables';
+import { todayIso } from '../utils/validation';
 
 export function startPage(onSave: (budget: Budget) => Promise<void>): HTMLElement {
   const section = document.createElement('main');
